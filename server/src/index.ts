@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import "dotenv/config";
 import bcrypt from "bcrypt";
 import { ContentModel, UserModel, LinkModel } from "./db";
-import { userMiddleware } from "../src/middleware";
+import { userMiddleware } from "./middleware";
 import { random } from "./utils";
 import cors from "cors";
 import path from "path";
