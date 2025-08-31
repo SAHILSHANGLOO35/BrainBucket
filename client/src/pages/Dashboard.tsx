@@ -96,7 +96,12 @@ export function Dashboard() {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-gray-900 via-[#0B0B0F] to-gray-950">
+    <div className="relative min-h-screen font-manrope">
+      <div className="min-h-screen absolute inset-0 -z-10">
+        <div className="absolute h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]">
+          <div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_800px_at_100%_200px,#d5c5ff,transparent)]"></div>
+        </div>
+      </div>
       {/* Mobile Sidebar */}
       <div
         className={`
@@ -140,19 +145,19 @@ export function Dashboard() {
         {/* Top Bar */}
         <div
           className={`
-                    fixed top-0 right-0 left-0 lg:left-60
-                    flex items-center justify-between
-                    p-4 transition-all duration-150
-                    ${
-                      isScrolled
-                        ? "bg-gray-900 bg-opacity-50 backdrop-blur-md border-b-2 border-b-white/15"
-                        : "bg-opacity-0 border-b-transparent"
-                    }
-                `}
+            fixed top-0 right-0 left-0 lg:left-60
+            flex items-center justify-between
+            p-4 transition-all duration-300
+            ${
+              isScrolled
+                ? "bg-white/30 backdrop-blur-xl border-b border-white/40 shadow-sm"
+                : "bg-transparent"
+            }
+          `}
         >
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden text-white"
+            className="lg:hidden text-gray-900"
             onClick={() => setIsSidebarOpen(true)}
           >
             <Menu className="w-6 h-6" />
@@ -162,14 +167,14 @@ export function Dashboard() {
           <div className="flex items-center gap-2 sm:gap-4 ml-auto">
             <Button
               onClick={() => setModalOpen(true)}
-              variant="primary"
+              className="bg-sky-400 cursor-pointer"
               text={window.innerWidth < 640 ? "" : "Add Content"}
               startIcon={<PlusIcon />}
             />
 
             <Button
               onClick={handleShare}
-              variant="secondary"
+              className="bg-neutral-200 cursor-pointer"
               text={window.innerWidth < 640 ? "" : shareText}
               startIcon={<ShareIcon />}
               isDisabled={contents.length === 0}
@@ -184,10 +189,10 @@ export function Dashboard() {
               </div>
 
               {dropdownOpen && (
-                <div className="absolute right-0 mt-1 w-48 rounded-md shadow-lg bg-gray-800 ring-1 ring-black ring-opacity-5">
+                <div className="absolute right-0 mt-1 w-48 rounded-md shadow-lg bg-white/80 backdrop-blur-lg ring-1 ring-black/10">
                   <div className="py-1">
                     <button
-                      className="w-full px-4 py-2 text-sm text-white hover:bg-gray-700 flex items-center gap-2"
+                      className="w-full px-4 py-2 text-sm text-gray-900 hover:bg-gray-200 flex items-center gap-2"
                       onClick={() => {
                         localStorage.removeItem("token");
                         window.location.href = "/signin";
