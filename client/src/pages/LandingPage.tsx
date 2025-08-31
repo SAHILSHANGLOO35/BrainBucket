@@ -90,11 +90,11 @@ export default function LandingPage() {
 
   const imageScrollRef = useRef(null);
 
-  const commonTileClasses = `rounded-lg flex items-center justify-center h-20 min-w-max text-neutral-500`;
+  const commonTileClasses = `rounded-lg flex items-center justify-center h-20 min-w-0 text-neutral-500`;
 
   return (
-    <div className="min-h-screen max-w-screen flex flex-col relative px-24 py-4 font-manrope gap-20">
-      <div className="min-h-screen absolute inset-0 -z-10">
+    <div className="min-h-screen w-full flex flex-col relative px-4 sm:px-8 md:px-16 lg:px-24 py-4 font-manrope gap-20 overflow-x-hidden">
+      <div className="min-h-screen absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]">
           <div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_800px_at_100%_200px,#d5c5ff,transparent)]"></div>
         </div>
@@ -113,7 +113,7 @@ export default function LandingPage() {
           opacity: { duration: 1.0, ease: "easeInOut" },
         }}
         viewport={{ once: true }}
-        className="mx-auto w-full flex items-center justify-between px-4 rounded-full py-1"
+        className="mx-auto w-full flex items-center justify-between px-2 sm:px-4 rounded-full py-1"
         style={{
           boxShadow:
             "0px 2px 3px -1px rgba(0, 0, 0, 0.1), 0px 1px 0px 0px rgba(25, 28, 33, 0.02), 0px 0px 0px 1px rgba(25, 28, 33, 0.08)",
@@ -123,24 +123,27 @@ export default function LandingPage() {
           <AutoFixHighIcon />
           brainbucket
         </div>
-        <div className="flex items-center gap-x-8">
-          <div className="font-bold text-[15px] cursor-pointer" onClick={login}>
+        <div className="flex items-center gap-x-4 sm:gap-x-8">
+          <div
+            className="font-bold text-sm sm:text-[15px] cursor-pointer"
+            onClick={login}
+          >
             Log in
           </div>
           <div
-            className="flex items-center justify-center gap-2 font-medium text-[15px] bg-neutral-800 text-neutral-100 border-neutral-800 rounded-full px-3 py-1 shadow-md shadow-black/10 group cursor-pointer"
+            className="flex items-center justify-center gap-2 font-medium text-sm sm:text-[15px] bg-neutral-800 text-neutral-100 border-neutral-800 rounded-full px-2 sm:px-3 py-1 shadow-md shadow-black/10 group cursor-pointer"
             onClick={signup}
           >
             <div className="group-hover:scale-150 transition-all duration-200">
-              <User2 size={15} />
+              <User2 size={14} />
             </div>
             <div className="">Sign up</div>
           </div>
         </div>
       </motion.nav>
 
-      <main className="max-w-screen flex flex-col items-center justify-center pt-2 mb-5 mt-5">
-        <div className="text-3xl max-w-5xl sm:text-4xl md:text-7xl font-bold text-center flex flex-col items-center justify-center text-neutral-950">
+      <main className="w-full flex flex-col items-center justify-center mb-5 overflow-x-hidden">
+        <div className="text-3xl max-w-sm sm:max-w-5xl sm:text-4xl md:text-7xl font-bold text-center flex flex-col items-center justify-center text-neutral-950">
           <motion.div
             initial={{ y: -50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -173,7 +176,7 @@ export default function LandingPage() {
               opacity: { duration: 1.0, ease: "easeInOut" },
             }}
             viewport={{ once: true }}
-            className="text-lg sm:text-lg max-w-md text-neutral-400 mb-8 px-4 sm:px-0 pt-4 font-medium"
+            className="text-lg sm:text-lg max-w-md text-neutral-400 mb-8 px-2 sm:px-4 md:px-0 pt-4 font-medium"
           >
             Save, organize, and share your valuable online content in one secure
             place!
@@ -211,7 +214,7 @@ export default function LandingPage() {
             )}
           </motion.button>
 
-          <div className="pt-4 mb-8 w-full">
+          <div className="pt-4 mb-8 w-full px-2 sm:px-4 md:px-0">
             <motion.img
               initial={{ x: -50, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
@@ -222,21 +225,21 @@ export default function LandingPage() {
                 mass: 0.8,
                 stiffness: 100,
                 damping: 20,
-                // opacity: { duration: 2.0, ease: "easeInOut" },
               }}
               viewport={{ once: true }}
               src="/assets/Pulsecheck.png"
               alt="Brain Bucket Dashboard Image"
-              className="rounded-md md:rounded-lg shadow-[0_-10px_20px_rgba(240,_46,_170,_0.25)]"
+              className="w-full h-auto rounded-md md:rounded-lg md:shadow-[0_-10px_20px_rgba(240,_46,_170,_0.25)] object-contain"
             />
           </div>
+
           <div className="pt-4 mb-8 flex flex-col">
             <div className="text-xl font-semibold text-neutral-600">
               Works Seamlessly With The{" "}
               <span className="font-pacifico font-thin">Followings</span>
             </div>
             <div
-              className="relative mt-8 w-full max-w-5xl overflow-hidden px-4"
+              className="relative mt-8 w-full max-w-5xl overflow-hidden px-2 sm:px-4"
               style={{
                 maskImage:
                   "linear-gradient(to right, transparent, white 10%, white 90%, transparent)",
@@ -245,56 +248,56 @@ export default function LandingPage() {
               }}
             >
               <motion.div
-                className="flex items-center whitespace-nowrap"
+                className="flex items-center whitespace-nowrap gap-4 sm:gap-6 md:gap-8 lg:gap-12"
                 variants={reverseMarqueeVariants}
                 animate="animate"
               >
                 {[...Array(4)].map((_, index) => (
                   <div
                     key={`row2-${index}`}
-                    className="flex gap-6 sm:gap-12 px-6"
+                    className="flex gap-4 sm:gap-6 md:gap-8 lg:gap-12 px-4 sm:px-6"
                   >
                     {/* X.com */}
                     <div
-                      className={`${commonTileClasses} transition-transform duration-300 hover:scale-110`}
+                      className={`${commonTileClasses} transition-transform duration-300 hover:scale-110 flex-shrink-0`}
                       style={{ backgroundColor: "transparent" }}
                     >
                       <img
                         src="/assets/twitter.png"
                         alt="X"
-                        className="h-10 w-10 sm:h-12 sm:w-12"
+                        className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 flex-shrink-0"
                       />
-                      <span className="text-xl sm:text-2xl font-semibold ml-2 text-neutral-800">
+                      <span className="text-lg sm:text-xl md:text-2xl font-semibold ml-2 text-neutral-800 whitespace-nowrap">
                         X.com
                       </span>
                     </div>
 
                     {/* YouTube */}
                     <div
-                      className={`${commonTileClasses} transition-transform duration-300 hover:scale-110`}
+                      className={`${commonTileClasses} transition-transform duration-300 hover:scale-110 flex-shrink-0`}
                       style={{ backgroundColor: "transparent" }}
                     >
                       <img
                         src="/assets/youtube.png"
                         alt="YouTube"
-                        className="h-10 w-10 sm:h-12 sm:w-12"
+                        className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 flex-shrink-0"
                       />
-                      <span className="text-xl sm:text-2xl font-semibold ml-2 text-neutral-800">
+                      <span className="text-lg sm:text-xl md:text-2xl font-semibold ml-2 text-neutral-800 whitespace-nowrap">
                         YouTube.com
                       </span>
                     </div>
 
                     {/* PDFs */}
                     <div
-                      className={`${commonTileClasses} transition-transform duration-300 hover:scale-110`}
+                      className={`${commonTileClasses} transition-transform duration-300 hover:scale-110 flex-shrink-0`}
                       style={{ backgroundColor: "transparent" }}
                     >
                       <img
                         src="/assets/pdf.png"
                         alt="PDFs"
-                        className="h-10 w-10 sm:h-12 sm:w-12"
+                        className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 flex-shrink-0"
                       />
-                      <span className="text-xl sm:text-2xl font-semibold ml-2 text-neutral-800">
+                      <span className="text-lg sm:text-xl md:text-2xl font-semibold ml-2 text-neutral-800 whitespace-nowrap">
                         PDFs
                       </span>
                     </div>
@@ -306,7 +309,7 @@ export default function LandingPage() {
         </div>
       </main>
 
-      <section className="max-w-screen flex flex-col items-center justify-center pt-2 mb-5 mt-5 overflow-hidden">
+      <section className="w-full flex flex-col items-center justify-center mb-5 overflow-x-hidden">
         <motion.div
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -331,14 +334,14 @@ export default function LandingPage() {
             Keep all your important content here whether it's YouTube Video,
             Tweet, or PDF.
           </p>
-          <div className="flex items-center justify-center gap-6">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-6">
             {/* Left Card: Animate from left */}
             <motion.div
               initial={{ x: -100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ type: "spring", stiffness: 100, damping: 20 }}
               viewport={{ once: true, amount: 0.5 }}
-              className="h-[360px] w-96 rounded-xl bg-neutral-100 border border-neutral-300/40 flex flex-col gap-2 overflow-hidden pt-4 items-start px-4"
+              className="h-[360px] w-full max-w-sm lg:w-96 rounded-xl bg-neutral-100 border border-neutral-300/40 flex flex-col gap-2 overflow-hidden pt-4 items-start px-4"
               style={{
                 boxShadow:
                   "0px 2px 3px -1px rgba(0, 0, 0, 0.1), 0px 1px 0px 0px rgba(25, 28, 33, 0.02), 0px 0px 0px 1px rgba(25, 28, 33, 0.08)",
@@ -372,7 +375,7 @@ export default function LandingPage() {
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ type: "spring", stiffness: 100, damping: 20 }}
               viewport={{ once: true, amount: 0.5 }}
-              className="h-96 w-96 rounded-xl bg-neutral-100 border border-neutral-300/40 flex flex-col gap-2 overflow-hidden pt-4 items-start px-4"
+              className="h-96 w-full max-w-sm lg:w-96 rounded-xl bg-neutral-100 border border-neutral-300/40 flex flex-col gap-2 overflow-hidden pt-4 items-start px-4"
               style={{
                 boxShadow:
                   "0px 2px 3px -1px rgba(0, 0, 0, 0.1), 0px 1px 0px 0px rgba(25, 28, 33, 0.02), 0px 0px 0px 1px rgba(25, 28, 33, 0.08)",
@@ -402,7 +405,7 @@ export default function LandingPage() {
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ type: "spring", stiffness: 100, damping: 20 }}
               viewport={{ once: true, amount: 0.5 }}
-              className="h-[360px] w-96 rounded-xl bg-neutral-100 border border-neutral-300/40 flex flex-col gap-2 overflow-hidden pt-4 items-start px-4"
+              className="h-[360px] w-full max-w-sm lg:w-96 rounded-xl bg-neutral-100 border border-neutral-300/40 flex flex-col gap-2 overflow-hidden pt-4 items-start px-4"
               style={{
                 boxShadow:
                   "0px 2px 3px -1px rgba(0, 0, 0, 0.1), 0px 1px 0px 0px rgba(25, 28, 33, 0.02), 0px 0px 0px 1px rgba(25, 28, 33, 0.08)",
@@ -428,7 +431,7 @@ export default function LandingPage() {
         </motion.div>
       </section>
 
-      <section className="max-w-screen flex flex-col items-center justify-center pt-2 mb-5 mt-5 overflow-hidden relative">
+      <section className="w-full flex flex-col items-center justify-center pt-2 mb-5 overflow-x-hidden relative">
         <div className="mx-auto flex w-full flex-col items-center justify-center">
           {/* Heading */}
           <div className="flex text-center">
@@ -456,13 +459,13 @@ export default function LandingPage() {
 
           {/* Content & Image */}
           <div
-            className="sm:md-10 flex w-full h-full flex-col items-center justify-center gap-10 lg:flex-row lg:items-center lg:justify-center lg:gap-14"
+            className="flex w-full h-full flex-col items-center justify-center gap-8 lg:gap-14 lg:flex-row lg:items-center lg:justify-center"
             ref={imageScrollRef}
           >
             {/* Left Text & Timeline */}
-            <div className="flex w-full max-w-3xl flex-col px-0 sm:px-4 pt-2">
+            <div className="flex w-full max-w-3xl flex-col px-2 sm:px-4 pt-2">
               <motion.div
-                className="relative text-lg max-w-2xl text-neutral-600 mb-4 px-4 sm:px-0 pt-4 font-semibold sm:text-3xl md:text-4xl"
+                className="relative text-base sm:text-lg md:text-2xl lg:text-3xl xl:text-4xl max-w-2xl text-neutral-600 mb-4 px-2 sm:px-4 md:px-0 pt-4 font-semibold"
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
@@ -480,17 +483,17 @@ export default function LandingPage() {
                 Tweets in One Hub.
               </motion.div>
 
-              <div className="text-lg sm:text-lg max-w-md text-neutral-400 px-4 sm:px-0 font-medium">
+              <div className="text-base sm:text-lg max-w-md text-neutral-400 px-2 sm:px-4 md:px-0 font-medium">
                 Your dashboard keeps all your PDFs, videos, and tweets
                 organized. Track, manage, and access them quickly, with zero
                 clutter.
               </div>
 
-              <div className="mt-6 text-neutral-900/80">
-                <Timeline position="alternate">
+              <div className="mt-6 text-neutral-900/80 overflow-x-auto">
+                <Timeline position="alternate" sx={{ padding: 0 }}>
                   <TimelineItem>
                     <TimelineOppositeContent
-                      sx={{ m: "auto 0" }}
+                      sx={{ m: "auto 0", display: { xs: "none", sm: "block" } }}
                       align="right"
                       variant="body2"
                       color="oklch(26.9% 0 0)"
@@ -598,7 +601,7 @@ export default function LandingPage() {
 
             {/* Right Image */}
             <motion.div
-              className="h-[250px] w-full sm:h-[400px] md:h-screen lg:h-screen flex items-center justify-start overflow-hidden pt-2"
+              className="h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-screen w-full max-w-md lg:max-w-none flex items-center justify-start overflow-hidden pt-2"
               initial={{ x: 100, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{
@@ -612,11 +615,11 @@ export default function LandingPage() {
               }}
               viewport={{ root: imageScrollRef, amount: 0.2, once: true }}
             >
-              <div className="h-full w-[900px] max-w-none">
+              <div className="h-full w-full max-w-sm lg:max-w-md xl:max-w-full">
                 <img
                   src="assets/Pulsecheck.png"
                   alt=""
-                  className="h-full w-full object-cover object-left rounded-l-lg"
+                  className="h-full w-full object-cover object-left rounded-lg lg:rounded-l-lg"
                 />
               </div>
             </motion.div>
@@ -624,7 +627,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="max-w-screen flex flex-col items-center justify-center pt-2 mb-5 mt-5 overflow-hidden relative">
+      <section className="w-full flex flex-col items-center justify-center mb-5 overflow-x-hidden relative">
         <div className="mx-auto flex w-full flex-col items-center justify-center px-2 sm:px-4">
           {/* Heading Section */}
           <motion.div
@@ -655,7 +658,7 @@ export default function LandingPage() {
               </span>
             </div>
 
-            <div className="text-lg sm:text-lg max-w-xl text-center text-neutral-400 mb-8 px-4 sm:px-0 pt-4 font-medium">
+            <div className="text-base sm:text-lg max-w-xl text-center text-neutral-400 mb-8 px-2 sm:px-4 md:px-0 pt-4 font-medium">
               Get clear answers to how our platform makes it easy to understand
               and improve your Website's performance.
             </div>
@@ -728,7 +731,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="max-w-screen flex flex-col items-center justify-center pt-2 mb-5 mt-5 overflow-hidden relative">
+      <section className="w-full flex flex-col items-center justify-center mb-5 overflow-x-hidden relative">
         <div className="mx-auto flex w-full flex-col items-center justify-center px-2 sm:px-4">
           {/* Heading Section */}
           <motion.div
@@ -756,7 +759,7 @@ export default function LandingPage() {
               </span>
             </div>
 
-            <div className="text-lg sm:text-lg max-w-xl text-center text-neutral-400 mb-8 px-4 sm:px-0 font-medium">
+            <div className="text-base sm:text-lg max-w-xl text-center text-neutral-400 mb-8 px-2 sm:px-4 md:px-0 font-medium">
               No more lost links or scattered files. With BrainBucket, your
               ideas, resources, and inspirations live in one simple, organized
               space.
@@ -781,33 +784,56 @@ export default function LandingPage() {
             viewport={{ once: true }}
           >
             <div className="flex flex-col gap-6">
-              <div className="flex items-center justify-between">
-                <div className="text-black font-extrabold text-2xl flex items-center gap-2">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="text-black font-extrabold text-xl sm:text-2xl flex items-center gap-2">
                   <AutoFixHighIcon />
                   brainbucket
                 </div>
                 <div className="flex gap-4 items-center">
                   <span className="font-semibold">Social Media</span>
-                  <span className="px-2 py-2 border border-neutral-700/30 rounded-md cursor-pointer">
-                    <XIcon />
-                  </span>
-                  <span className="px-2 py-2 border border-neutral-700/30 rounded-md cursor-pointer">
-                    <Instagram />
-                  </span>
-                  <span className="px-2 py-2 border border-neutral-700/30 rounded-md cursor-pointer">
-                    <Linkedin />
-                  </span>
+                  <a
+                    href="https://x.com/doubleSdotdev"
+                    target="_blank"
+                    className="flex"
+                  >
+                    <span className="px-2 py-2 border border-neutral-700/30 rounded-md cursor-pointer">
+                      <XIcon />
+                    </span>
+                  </a>
+                  <a
+                    href="https://www.instagram.com/sahilshangloo.35/"
+                    className="flex"
+                    target="_blank"
+                  >
+                    <span className="px-2 py-2 border border-neutral-700/30 rounded-md cursor-pointer">
+                      <Instagram />
+                    </span>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/sahil-shangloo/"
+                    className="flex"
+                    target="_blank"
+                  >
+                    <span className="px-2 py-2 border border-neutral-700/30 rounded-md cursor-pointer">
+                      <Linkedin />
+                    </span>
+                  </a>
                 </div>
               </div>
               <div className="border-b w-full border-neutral-700/40" />
-              <div className="flex items-start justify-between">
+              <div className="flex flex-col sm:flex-row items-start justify-between gap-6">
                 <div className="flex gap-2 items-center">
                   <span className="font-semibold">Reach Developer at</span>
-                  <span className="px-2 py-2 border border-neutral-700/30 rounded-md cursor-pointer">
-                    <Mail />
-                  </span>
+                  <a
+                    href="mailto:sahilshangloo35@gmail.com"
+                    className="flex items-center"
+                  >
+                    <span className="px-2 py-2 border border-neutral-700/30 rounded-md cursor-pointer">
+                      <Mail />
+                    </span>
+                  </a>
                 </div>
-                <div className="flex items-center gap-4">
+                <div className="flex flex-col sm:flex-row items-start gap-6 sm:gap-8">
                   <div className="flex flex-col gap-2">
                     <span className="font-semibold">Product</span>
                     <span className="text-neutral-500 font-medium">
@@ -833,7 +859,7 @@ export default function LandingPage() {
                 </div>
               </div>
               <div className="border-b w-full border-neutral-700/40" />
-              <div className="flex items-center justify-between font-semibold text-neutral-500">
+              <div className="flex flex-col sm:flex-row items-center justify-between font-semibold text-neutral-500 gap-2">
                 <span>© 2025 Brain Bucket. All rights reserved</span>
                 <span>~ Sahl Shangloo AKA doubleSdotdev</span>
               </div>

@@ -105,7 +105,7 @@ export function Dashboard() {
       {/* Mobile Sidebar */}
       <div
         className={`
-                fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity duration-300
+                fixed inset-0 bg-black/80 bg-opacity-50 z-40 transition-opacity duration-300
                 lg:hidden
                 ${
                   isSidebarOpen
@@ -136,7 +136,7 @@ export function Dashboard() {
       </div>
 
       {/* Main Content */}
-      <div className="lg:ml-60">
+      <div className="lg:ml-60 flex flex-col items-center">
         <CreateContentModal
           open={modalOpen}
           onClose={() => setModalOpen(false)}

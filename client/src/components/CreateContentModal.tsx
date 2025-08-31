@@ -144,7 +144,7 @@ export function CreateContentModal({ open, onClose }) {
         className="fixed inset-0 bg-black/80 bg-opacity-50"
         onClick={onClose}
       />
-      <div className="fixed inset-0 flex items-center justify-center pointer-events-none">
+      <div className="fixed inset-0 flex items-center justify-center pointer-events-none px-2 sm:px-0">
         <div className="bg-white rounded-lg w-96 p-6 pointer-events-auto">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-semibold">Add Content</h2>
