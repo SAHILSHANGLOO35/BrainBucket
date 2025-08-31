@@ -85,8 +85,7 @@ export function Dashboard() {
         }
       );
       // @ts-ignore
-      // const shareUrl = `https://brainbucket.tech/share/${response.data.hash}`;
-      const shareUrl = `http://localhost:5173/share/${response.data.hash}`;
+      const shareUrl = `https://brainbucket.tech/share/${response.data.hash}`;
       await navigator.clipboard.writeText(shareUrl);
       setShareText("Copied");
       setTimeout(() => setShareText("Share Brain"), 3000);
