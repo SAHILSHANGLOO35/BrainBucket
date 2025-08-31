@@ -3,6 +3,7 @@ import {
   Instagram,
   LayoutDashboardIcon,
   Linkedin,
+  Loader,
   LucideLink2,
   Mail,
   User2,
@@ -20,7 +21,7 @@ import TimelineDot from "@mui/lab/TimelineDot";
 import Typography from "@mui/material/Typography";
 import PersonIcon from "@mui/icons-material/Person";
 import InsightsIcon from "@mui/icons-material/Insights";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -30,6 +31,7 @@ import {
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 
 export default function LandingPage() {
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   function login() {
@@ -42,6 +44,7 @@ export default function LandingPage() {
 
   function getStarted() {
     const isLoggedIn = localStorage.getItem("token");
+    setLoading(true);
     if (isLoggedIn) {
       navigate("/dashboard");
     } else {
@@ -176,38 +179,36 @@ export default function LandingPage() {
             place!
           </motion.p>
           <motion.button
-            initial={{ y: -50, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{
-              type: "spring",
-              // duration: 1.3,
-              bounce: 0.1,
-              mass: 0.8,
-              stiffness: 100,
-              damping: 20,
-              // opacity: { duration: 1.0, ease: "easeInOut" },
-            }}
-            viewport={{ once: true }}
-            className="flex items-center w-fit px-4 py-2 rounded-full relative bg-black text-white text-sm hover:shadow-2xl hover:shadow-white transition duration-200 border border-neutral-600 mb-8 cursor-pointer group"
+            className="flex items-center w-fit min-w-[180px] px-4 py-2 rounded-full relative bg-black text-white text-sm hover:shadow-2xl hover:shadow-white transition duration-200 border border-neutral-600 mb-8 cursor-pointer group"
             onClick={getStarted}
+            disabled={loading}
           >
             <div className="absolute inset-x-0 h-px w-1/2 mx-auto -top-px shadow-2xl bg-gradient-to-r from-transparent via-teal-500 to-transparent" />
-            <motion.span
-              className="flex-1 text-center relative z-20 px-4"
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{
-                type: "spring",
-                bounce: 0.1,
-                mass: 0.8,
-                stiffness: 100,
-                damping: 20,
-              }}
-              viewport={{ once: true }}
-            >
-              Get Started
-            </motion.span>
-            <ArrowUpRight className="relative z-20 group-hover:rotate-45 transition-all duration-200 flex items-center justify-center" />
+            {loading ? (
+              <div className="flex items-center justify-center w-full py-0.5">
+                <span className="mr-1">Redirecting</span>
+                <Loader className="h-5 w-5 animate-spin ease-linear" />
+              </div>
+            ) : (
+              <>
+                <motion.span
+                  className="flex-1 text-center relative z-20 px-4"
+                  initial={{ y: 30, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{
+                    type: "spring",
+                    bounce: 0.1,
+                    mass: 0.8,
+                    stiffness: 100,
+                    damping: 20,
+                  }}
+                  viewport={{ once: true }}
+                >
+                  Get Started
+                </motion.span>
+                <ArrowUpRight className="relative z-20 group-hover:rotate-45 transition-all duration-200 flex items-center justify-center" />
+              </>
+            )}
           </motion.button>
 
           <div className="pt-4 mb-8 w-full">
