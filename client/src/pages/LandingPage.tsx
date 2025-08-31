@@ -40,7 +40,7 @@ export default function LandingPage() {
     navigate(`/signup`);
   }
 
-  function createBucket() {
+  function getStarted() {
     const isLoggedIn = localStorage.getItem("token");
     if (isLoggedIn) {
       navigate("/dashboard");
@@ -121,9 +121,14 @@ export default function LandingPage() {
           brainbucket
         </div>
         <div className="flex items-center gap-x-8">
-          <div className="font-bold text-[15px]">Log in</div>
-          <div className="flex items-center justify-center gap-2 font-medium text-[15px] bg-neutral-800 text-neutral-100 border-neutral-800 rounded-full px-3 py-1 shadow-md shadow-black/10">
-            <div>
+          <div className="font-bold text-[15px] cursor-pointer" onClick={login}>
+            Log in
+          </div>
+          <div
+            className="flex items-center justify-center gap-2 font-medium text-[15px] bg-neutral-800 text-neutral-100 border-neutral-800 rounded-full px-3 py-1 shadow-md shadow-black/10 group cursor-pointer"
+            onClick={signup}
+          >
+            <div className="group-hover:scale-150 transition-all duration-200">
               <User2 size={15} />
             </div>
             <div className="">Sign up</div>
@@ -183,7 +188,8 @@ export default function LandingPage() {
               // opacity: { duration: 1.0, ease: "easeInOut" },
             }}
             viewport={{ once: true }}
-            className="flex items-center w-fit px-4 py-2 rounded-full relative bg-black text-white text-sm hover:shadow-2xl hover:shadow-white transition duration-200 border border-neutral-600 mb-8"
+            className="flex items-center w-fit px-4 py-2 rounded-full relative bg-black text-white text-sm hover:shadow-2xl hover:shadow-white transition duration-200 border border-neutral-600 mb-8 cursor-pointer group"
+            onClick={getStarted}
           >
             <div className="absolute inset-x-0 h-px w-1/2 mx-auto -top-px shadow-2xl bg-gradient-to-r from-transparent via-teal-500 to-transparent" />
             <motion.span
@@ -196,13 +202,12 @@ export default function LandingPage() {
                 mass: 0.8,
                 stiffness: 100,
                 damping: 20,
-                // opacity: { duration: 1.0, ease: "easeInOut" },
               }}
               viewport={{ once: true }}
             >
               Get Started
             </motion.span>
-            <ArrowUpRight className="relative z-20" />
+            <ArrowUpRight className="relative z-20 group-hover:rotate-45 transition-all duration-200 flex items-center justify-center" />
           </motion.button>
 
           <div className="pt-4 mb-8 w-full">
