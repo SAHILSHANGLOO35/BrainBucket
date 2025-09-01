@@ -227,7 +227,7 @@ export default function LandingPage() {
                 damping: 20,
               }}
               viewport={{ once: true }}
-              src="/assets/Pulsecheck.png"
+              src="/assets/BB_Dashboard_image.png"
               alt="Brain Bucket Dashboard Image"
               className="w-full h-auto rounded-md md:rounded-lg md:shadow-[0_-10px_20px_rgba(240,_46,_170,_0.25)] object-contain"
             />
@@ -617,9 +617,9 @@ export default function LandingPage() {
             >
               <div className="h-full w-full max-w-sm lg:max-w-md xl:max-w-full">
                 <img
-                  src="assets/Pulsecheck.png"
+                  src="assets/BB_Dashboard_image.png"
                   alt=""
-                  className="h-full w-full object-cover object-left rounded-lg lg:rounded-l-lg"
+                  className="h-full w-full object-cover object-left rounded-lg lg:rounded-l-lg border border-neutral-700/15"
                 />
               </div>
             </motion.div>
