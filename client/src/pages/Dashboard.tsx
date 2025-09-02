@@ -86,7 +86,6 @@ export function Dashboard() {
       );
       // @ts-ignore
       const shareUrl = `https://brainbucket.tech/share/${response.data.hash}`;
-      // const shareUrl = `https://localhost:5173/share/${response.data.hash}`;
       await navigator.clipboard.writeText(shareUrl);
       setShareText("Copied");
       setTimeout(() => setShareText("Share Brain"), 3000);
@@ -223,7 +222,7 @@ export function Dashboard() {
               />
             ))
           ) : (
-            <div className="col-span-full text-center text-white">
+            <div className="col-span-full text-center text-neutral-700">
               {selectedFilter === "all"
                 ? "Add your important content here"
                 : `No ${selectedFilter} content available`}
